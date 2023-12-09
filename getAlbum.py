@@ -28,8 +28,11 @@ def getTrackList(artist, album):
        new_result = musicbrainzngs.get_release_by_id(id, includes=["recordings"])
 
        print(new_result['release']['title'])
-       print(new_result['release']['date'])
-       print(new_result['release']['medium-list'][0]['format'])
+       if 'date' in new_result['release']:
+          print(new_result['release']['date'])
+
+       if 'format' in  new_result['release']['medium-list'][0]:  
+          print(new_result['release']['medium-list'][0]['format'])
        print()
 
        t = (new_result["release"]["medium-list"][0]["track-list"])
